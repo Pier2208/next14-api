@@ -24,6 +24,11 @@ export class AppController {
     return this.eventService.getEvents();
   }
 
+  @Get('events/:id')
+  async getEventById(@Param('id') id: string): Promise<Event> {
+    return this.eventService.getEvent({ id: Number(id) });
+  }
+
   @Delete('events/:id')
   async deletePost(@Param('id') id: string): Promise<Event> {
     return this.eventService.deleteEvent({ id: Number(id) });

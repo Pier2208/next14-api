@@ -13,6 +13,14 @@ export class EventService {
     });
   }
 
+  async getEvent(
+    eventWhereUniqueInput: Prisma.EventWhereUniqueInput,
+  ): Promise<Event | null> {
+    return this.prisma.event.findUnique({
+      where: eventWhereUniqueInput,
+    });
+  }
+
   async getEvents(): Promise<Event[]> {
     return this.prisma.event.findMany();
   }
